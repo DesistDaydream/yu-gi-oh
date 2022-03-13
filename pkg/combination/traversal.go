@@ -82,8 +82,8 @@ func moveOneToLeft(leftNums []int) {
 	}
 }
 
-//根据索引号数组得到元素数组
-func ListCombinationKind(nums []string, indexs [][]int) [][]string {
+// 遍历牌组，获取所有组合的列表
+func TraversalDeckCombination(nums []string, indexs [][]int) [][]string {
 	if len(indexs) == 0 {
 		return [][]string{}
 	}
@@ -106,16 +106,6 @@ func ListCombinationKind(nums []string, indexs [][]int) [][]string {
 // 统计
 func ConditionCount(combination []string, condition []string) bool {
 	return subset.IsSubset(condition, combination)
-}
-
-// isElement 正常统计
-func isElement(combinations []string, condition string) bool {
-	for _, combination := range combinations {
-		if combination == condition {
-			return true
-		}
-	}
-	return false
 }
 
 // 判断遍历所有组合数的结果是否正确

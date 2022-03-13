@@ -18,8 +18,8 @@ var (
 		"TheEyeOfTimaeus", "TheEyeOfTimaeus",
 		"e", "f", "g", "h", "i", "g", "k", "l", "m", "n", "o", "p", "q",
 	}
-	Hand = []string{"a", "b"}
-	// Hand = []string{"DarkMagicalCircle", "EternalSoul", "MagiciansSouls", "TheEyeOfTimaeus"}
+	// Hand = []string{"a", "b"}
+	Hand = []string{"DarkMagicalCircle", "EternalSoul", "MagiciansSouls", "TheEyeOfTimaeus"}
 )
 
 type DarkMagician struct {
@@ -53,14 +53,14 @@ func main() {
 
 	logrus.Debugf("牌组总数: %v", DeckCount)
 
-	// 遍历样本，获取组合种类的列表
-	combinations := cbn.ListCombinationKind(Deck, cbn.CombinationIndexs(DeckCount, int(HandCount)))
+	// 遍历牌组，获取牌组中所有组合种类的列表
+	combinations := cbn.TraversalDeckCombination(Deck, cbn.CombinationIndexs(DeckCount, int(HandCount)))
 
 	logrus.Debugf("原始组合总数: %v", len(combinations))
-	// fmt.Println("原始组合列表:", combinations)
+	// fmt.Println("牌组中所有组合列表:", combinations)
 	cbn.CheckResult(DeckCount, HandCount, combinations)
 
-	// 获取 deck 中，至少有 1 个 a 且 1 个 b 的组合数
+	// 获取牌组中指定组合的总数
 	for _, combination := range combinations {
 		if cbn.ConditionCount(combination, Hand) {
 			TargetCombination++
