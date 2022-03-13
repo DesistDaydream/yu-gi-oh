@@ -16,18 +16,21 @@ var (
 		"EternalSoul", "EternalSoul",
 		"MagiciansSouls", "MagiciansSouls", "MagiciansSouls",
 		"TheEyeOfTimaeus", "TheEyeOfTimaeus",
-		"e", "f", "g", "h", "i", "g", "k", "l", "m", "n", "o", "p", "q",
+		"ApprenticeIllusionMagician", "ApprenticeIllusionMagician",
+		"e", "f", "g", "h", "i", "g", "k", "l", "m", "n", "o",
 	}
 	// Hand = []string{"a", "b"}
-	Hand = []string{"DarkMagicalCircle", "EternalSoul", "MagiciansSouls", "TheEyeOfTimaeus"}
+	Hand = []string{"DarkMagicalCircle", "EternalSoul", "MagiciansSouls", "TheEyeOfTimaeus", "ApprenticeIllusionMagician"}
 )
 
 type DarkMagician struct {
-	DarkMagician      string `json:"黑魔术师"`
-	DarkMagicalCircle string `json:"黑魔导阵"`
-	EternalSoul       string `json:"永远之魂"`
-	MagiciansSouls    string `json:"魔术师双魂"`
-	TheEyeOfTimaeus   string `json:"蒂迈欧之眼"`
+	DarkMagician string `json:"黑魔术师"`
+	// 下面这5张牌要是能直接抽到，是最完美组合(不考虑可以通过检索获取到牌的情况)
+	DarkMagicalCircle          string `json:"黑魔导阵"`
+	EternalSoul                string `json:"永远之魂"`
+	MagiciansSouls             string `json:"魔术师双魂"`
+	TheEyeOfTimaeus            string `json:"蒂迈欧之眼"`
+	ApprenticeIllusionMagician string `json:"幻想之见习魔导师"`
 
 	a string `json:"黑魔术师+幻想之见习魔导师+魔术师双魂"`
 	b string `json:"魔术师的救出+永远之魂+魔术师的导门阵+黑魔术之杖"`
