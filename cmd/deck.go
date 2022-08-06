@@ -3,37 +3,37 @@ package main
 import (
 	cbn "github.com/DesistDaydream/yu-gi-oh/pkg/combination"
 	"github.com/DesistDaydream/yu-gi-oh/pkg/log"
-	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/pflag"
 )
 
 var (
+	z    = "黑魔导+黑魔导女孩+马哈德"
+	c    = "黑之魔导阵"
+	e    = "永远之魂"
+	s    = "魔术师双魂"
 	Deck = []string{
-		"a", "a", "a", "a", "a", "a", "a", "a",
+		z, z, z, z, z, "黑魔导", "黑魔导", "黑魔导",
 		"b", "b", "b", "b", "b", "b", "b", "b", "b",
-		"DarkMagicalCircle", "DarkMagicalCircle", "DarkMagicalCircle",
-		"EternalSoul", "EternalSoul",
-		"MagiciansSouls", "MagiciansSouls", "MagiciansSouls",
+		c, c, c, e, e, s, s, s,
 		"TheEyeOfTimaeus", "TheEyeOfTimaeus",
 		"ApprenticeIllusionMagician", "ApprenticeIllusionMagician",
 		"e", "f", "g", "h", "i", "g", "k", "l", "m", "n", "o",
 	}
-	// Hand = []string{"a", "b"}
-	Hand = []string{"DarkMagicalCircle", "EternalSoul", "MagiciansSouls", "TheEyeOfTimaeus", "ApprenticeIllusionMagician"}
+	Hand = []string{z}
+	// Hand = []string{"DarkMagicalCircle", "EternalSoul", "MagiciansSouls", "TheEyeOfTimaeus", "ApprenticeIllusionMagician"}
 )
 
 type DarkMagician struct {
-	DarkMagician string `json:"黑魔术师"`
-	// 下面这5张牌要是能直接抽到，是最完美组合(不考虑可以通过检索获取到牌的情况)
-	DarkMagicalCircle          string `json:"黑魔导阵"`
+	DarkMagician               string `json:"黑魔导"`
+	DarkMagicalCircle          string `json:"黑之魔导阵"`
 	EternalSoul                string `json:"永远之魂"`
 	MagiciansSouls             string `json:"魔术师双魂"`
 	TheEyeOfTimaeus            string `json:"蒂迈欧之眼"`
-	ApprenticeIllusionMagician string `json:"幻想之见习魔导师"`
+	ApprenticeIllusionMagician string `json:"幻想见习魔导师"`
 
-	a string `json:"黑魔术师+幻想之见习魔导师+魔术师双魂"`
-	b string `json:"魔术师的救出+永远之魂+魔术师的导门阵+黑魔术之杖"`
+	// a string `json:"黑魔术师+幻想之见习魔导师+魔术师双魂"`
+	// b string `json:"魔术师的救出+永远之魂+魔术师的导门阵+黑魔术之杖"`
 }
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
 
 	// 初始化日志
 	if err := log.LogInit(ygoFlags.LogLevel, ygoFlags.LogFile, ygoFlags.LogFormat); err != nil {
-		logrus.Fatal(errors.Wrap(err, "set log level error"))
+		logrus.Fatal("初始化日志失败", err)
 	}
 
 	// 设置变量

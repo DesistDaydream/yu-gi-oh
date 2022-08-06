@@ -7,7 +7,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-//组合算法(从nums中取出m个数)
+//组合算法(从 n 中取出 k 个数)
 func CombinationIndexs(n int, k int) [][]int {
 	if k < 1 || k > n {
 		fmt.Println("Illegal argument. Param m must between 1 and len(nums).")
