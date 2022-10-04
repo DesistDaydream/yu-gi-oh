@@ -112,7 +112,7 @@ func ConditionCount(combination []string, condition []string) bool {
 func CheckResult(n, k int, combinations [][]string) {
 	rightCount := Combination(n, k).Int64()
 	if int(rightCount) == len(combinations) {
-		logrus.Infoln("数学计算结果与遍历结果相同")
+		logrus.Debugln("数学计算结果与遍历结果相同")
 	} else {
 		logrus.WithFields(logrus.Fields{
 			"数学计算结果": rightCount,
